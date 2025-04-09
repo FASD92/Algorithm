@@ -23,7 +23,8 @@ for문으로 회의들을 하나씩 반복하는데 반복 인자는 start, end
 count에 +=1을 하고 현재 회의의 종료 시간을 last_end에 업데이트한다
 즉, '배정한다.'
 """
-n = int(input())
+import sys
+n = int(sys.stdin.readline())
 meetings = [tuple(map(int, input().split())) for _ in range(n)]
 
 meetings.sort(key=lambda x: (x[1], x[0]))
