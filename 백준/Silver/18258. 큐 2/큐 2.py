@@ -12,8 +12,9 @@
 commands[i]를 공백으로 split하고 언패킹 하고
 두번째 항목을 int형으로 변환해서 push 함수를 실행
 
-그 외에는 딕셔너리에서 commands[i]의 문자열과 일치하는 함수를 실행하는데
-딱히 인자가 필요 없으니 인자는 비워서 ()으로 만든다
+그 외에는 command_dict 딕셔너리에서 commands[i]의 문자열과 일치하는 키를 호출해 함수를 실행한다
+이게 가능한 것은 파이썬에서는 함수도 객체이기 때문!
+딱히 push 명령어 외에는 인자가 필요 없으니 인자는 비워서 ()으로 만든다
 """
 
 import sys
@@ -21,7 +22,7 @@ from collections import deque
 
 T = int(sys.stdin.readline().strip())
 result = deque()
-commands = [sys.stdin.readline().strip() for _ in range(T)]
+commands = [sys.stdin.readline().strip() for i in range(T)]
 
 def push(x):
     result.append(x)
