@@ -1,25 +1,21 @@
 """
-모듈러 연산
+(A**B) % C = ((A**B/2) * (A**B/2)) % C
 
-(10**11) % 12
-(10%12) ** (11%12) % 12
+베이스 케이스는 B, 즉 A의 지수가 0일 때 1을 반납
+즉 A^0이 될 때까지 2로 나눔
 
-base case는 지수가 0일 때 1을 return
-재귀로 지수가 0이 될 때까지 내려가는 거임
-result는 짝수 기준인데,
-half*half를 하는 이유는
-n**x = n**(x/2) * n**(x/2) 이기 때문
+근데 홀수일 때는 짝수 결과에 a를 곱해줘야함!
 """
 import sys
 A, B, C = map(int, sys.stdin.read().strip().split())
 
-def mod_pow(a, b, c):
-    if b == 0:
+def recursive(a, b, c):
+    if b == 0:  # A의 지수인 B가 0이 될 때까지
         return 1
-    half = mod_pow(a, b // 2, c)
-    result = (half * half) % c
-    if b % 2 == 1:
-        result = (result * a) % c
+    divided = recursive(a, b // 2, c)   # 2로 나누는 재귀를 들어간다
+    result = (divided * divided) % c
+    if b % 2 == 1:  # 만약 b가 홀수면
+        result = (result * a) % c   # 짝수의 결과값에 a를 곱해준다!
     return result
 
-print(mod_pow(A,B,C))
+print(recursive(A,B,C))
