@@ -22,7 +22,6 @@ import sys
 n = int(sys.stdin.readline().strip())
 graph = [list(sys.stdin.readline().strip()) for _ in range(n)]
 
-a = 0
 most_famous = 0
 
 for i in range(n):
