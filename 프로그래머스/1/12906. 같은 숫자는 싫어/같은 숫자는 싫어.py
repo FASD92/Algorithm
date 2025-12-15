@@ -6,7 +6,8 @@
 arr의 첫번째 원소부터 left pop을 한다. 이 때 left pop을 하려면 arr을 deque로 변환해야 한다.
 조건은 left pop한 값이 answer[-1]의 값과 일치하지 않을 때!
 
-"""
+기존 코드
+
 from collections import deque
 
 def solution(arr):
@@ -23,4 +24,15 @@ def solution(arr):
         else:
             continue
             
+    return answer
+
+"""
+
+def solution(arr):
+    answer = []
+    
+    for x in arr:
+        if len(answer) == 0 or answer[-1] != x:
+            answer.append(x)
+        
     return answer
